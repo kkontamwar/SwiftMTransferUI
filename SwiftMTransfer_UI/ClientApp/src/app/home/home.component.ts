@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   name = new FormControl('');
-  clickMessage = '';
+  accNumber = '';
   http: HttpClient;
   baseUrl: string;
 
@@ -32,21 +32,21 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registerForm);
-    const url = "https://swiftmtransferapi.azurewebsites.net/api/User";
+    this.baseUrl = "https://swiftmtransferapi.azurewebsites.net/";
 
 
-    this.http.get(url).subscribe(result => {
-      console.log("Value returned from web service call is ", result),
-        this.name.setValue(result);
-      this.router.navigate(['/counter']);
-    }, error => console.error(error));
-
-
-    //this.http.post(this.baseUrl + 'api/SampleData/PostRegisterData', this.registerForm.value).subscribe(result => {
+    //this.http.get(url).subscribe(result => {
     //  console.log("Value returned from web service call is ", result),
     //    this.name.setValue(result);
     //  this.router.navigate(['/counter']);
     //}, error => console.error(error));
+
+
+    this.http.post(this.baseUrl + 'api/SampleData/PostRegisterData', this.registerForm.value).subscribe(result => {
+      console.log("Value returned from web service call is ", result),
+        this.accNumber=result.toString(),
+      this.router.navigate(['/counter']);
+    }, error => console.error(error));
 
   }
 

@@ -3,29 +3,23 @@
 <h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <label>
-    Name:
-    <input type="text" [formControl]="name">
+    "Account Created Successfully "+ {{accNumber}}
   </label>
-
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input type="text" formControlName="firstName" class="form-control" />
-
   </div>
   <div class="form-group">
     <label for="lastName">Last Name</label>
     <input type="text" formControlName="lastName" class="form-control" />
-
   </div>
   <div class="form-group">
     <label for="mNumber">Mobile Number</label>
     <input type="text" formControlName="mNumber" class="form-control" />
-
   </div>
   <div class="form-group">
     <label for="emailID">Email ID</label>
     <input type="text" formControlName="emailID" class="form-control" />
-
   </div>
   <div class="form-group">
     <button class="btn btn-primary">Register</button>

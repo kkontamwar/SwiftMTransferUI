@@ -1,7 +1,22 @@
-<h1>Counter</h1>
 
-<p>This is a simple example of an Angular component.</p>
+<h2>Transact</h2>
+<form [formGroup]="transactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="fromAccNumber">From Account Number</label>
+    <input type="text" formControlName="fromAccNumber" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="toAccNumber">To Account Number</label>
+    <select class="form-control" id="toAccNumber" formControlName="toAccNumber">
+      <option *ngFor="let payeeAccount of payeeAccounts" [value]="payeeAccount.id">{{payeeAccount.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="transAmount">Transfer Amount</label>
+    <input type="text" formControlName="transAmount" class="form-control" />
+  </div>  
+  <div class="form-group">
+    <button class="btn btn-primary">Tranfer</button>
+  </div>
+</form>
 
-<p>Current count: <strong>{{ currentCount }}</strong></p>
-
-<button (click)="incrementCounter()">Increment</button>
